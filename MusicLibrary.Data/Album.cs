@@ -23,6 +23,12 @@ namespace MusicLibrary.Data
 
         public string DisplayName()
         {
+            if (string.IsNullOrEmpty(AlbumName))
+                return Artist?.AristName;
+
+            if (string.IsNullOrEmpty(Artist?.AristName))
+                return AlbumName;
+
             return $"{Artist.AristName} - {AlbumName}";
         }
     }
