@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.Web", "MusicLibrary\MusicLibrary.Web.csproj", "{6CFA1B70-FC3A-47A1-9D43-25434E839215}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.Data", "MusicLibrary.Data\MusicLibrary.Data.csproj", "{F2D5E9CD-4ABD-4815-AE0E-5CB44248AEC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.DataAccess", "MusicLibrary.DataAccess\MusicLibrary.DataAccess.csproj", "{0D3E48BB-1951-4743-AE0E-BE68A548202D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.Services", "MusicLibrary.Services\MusicLibrary.Services.csproj", "{793F2B43-4CA5-4DE6-B7A7-B5C519D56843}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0A182464-10A6-43C2-A7DC-1690CA8D76D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.Data.Tests", "MusicLibrary.Data.Tests\MusicLibrary.Data.Tests.csproj", "{97880645-200C-46E3-AA2C-8B6B367A0471}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{84DD64D6-0A62-4B93-B0A5-4075695CB26A}"
+	ProjectSection(SolutionItems) = preProject
+		CreateDatabase.sql = CreateDatabase.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{D98CEA87-EC4B-412E-8107-16C3143627B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.DataAccess.Interfaces", "MusicLibrary.DataAccess.Interfaces\MusicLibrary.DataAccess.Interfaces.csproj", "{46149555-8529-4151-8BAE-73F4D8AD853F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CFA1B70-FC3A-47A1-9D43-25434E839215}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CFA1B70-FC3A-47A1-9D43-25434E839215}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CFA1B70-FC3A-47A1-9D43-25434E839215}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CFA1B70-FC3A-47A1-9D43-25434E839215}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2D5E9CD-4ABD-4815-AE0E-5CB44248AEC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2D5E9CD-4ABD-4815-AE0E-5CB44248AEC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2D5E9CD-4ABD-4815-AE0E-5CB44248AEC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2D5E9CD-4ABD-4815-AE0E-5CB44248AEC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D3E48BB-1951-4743-AE0E-BE68A548202D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D3E48BB-1951-4743-AE0E-BE68A548202D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D3E48BB-1951-4743-AE0E-BE68A548202D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D3E48BB-1951-4743-AE0E-BE68A548202D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{793F2B43-4CA5-4DE6-B7A7-B5C519D56843}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{793F2B43-4CA5-4DE6-B7A7-B5C519D56843}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{793F2B43-4CA5-4DE6-B7A7-B5C519D56843}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{793F2B43-4CA5-4DE6-B7A7-B5C519D56843}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97880645-200C-46E3-AA2C-8B6B367A0471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97880645-200C-46E3-AA2C-8B6B367A0471}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97880645-200C-46E3-AA2C-8B6B367A0471}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97880645-200C-46E3-AA2C-8B6B367A0471}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46149555-8529-4151-8BAE-73F4D8AD853F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46149555-8529-4151-8BAE-73F4D8AD853F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46149555-8529-4151-8BAE-73F4D8AD853F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46149555-8529-4151-8BAE-73F4D8AD853F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0D3E48BB-1951-4743-AE0E-BE68A548202D} = {D98CEA87-EC4B-412E-8107-16C3143627B3}
+		{97880645-200C-46E3-AA2C-8B6B367A0471} = {0A182464-10A6-43C2-A7DC-1690CA8D76D4}
+		{46149555-8529-4151-8BAE-73F4D8AD853F} = {D98CEA87-EC4B-412E-8107-16C3143627B3}
+	EndGlobalSection
+EndGlobal
