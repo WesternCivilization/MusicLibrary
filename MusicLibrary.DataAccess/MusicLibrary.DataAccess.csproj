@@ -40,11 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Album.cs" />
-    <Compile Include="Artist.cs" />
-    <Compile Include="Genre.cs" />
-    <Compile Include="Playlist.cs" />
+    <Compile Include="AlbumRepository.cs" />
+    <Compile Include="ArtistRepository.cs" />
+    <Compile Include="GenreRepository.cs" />
+    <Compile Include="PlaylistRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MusicLibrary.DataAccess.Interfaces\MusicLibrary.DataAccess.Interfaces.csproj">
+      <Project>{46149555-8529-4151-8bae-73f4d8ad853f}</Project>
+      <Name>MusicLibrary.DataAccess.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MusicLibrary.Data\MusicLibrary.Data.csproj">
+      <Project>{f2d5e9cd-4abd-4815-ae0e-5cb44248aec9}</Project>
+      <Name>MusicLibrary.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

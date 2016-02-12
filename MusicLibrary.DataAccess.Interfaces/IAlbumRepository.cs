@@ -20,11 +20,4 @@ namespace MusicLibrary.DataAccess.Interfaces
         void CreateAlbum(Album album);
 
     }
-
-    public interface IPlaylistRepository
-    {
-        void CreatePlaylist(Playlist playlist);
-
-        IEnumerable<Playlist> GetAllPlaylists();
-    }
 }
