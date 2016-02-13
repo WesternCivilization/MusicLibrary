@@ -30,6 +30,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{D3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.Services.Interfaces", "MusicLibrary.Services.Interfaces\MusicLibrary.Services.Interfaces.csproj", "{0E54DFA7-9452-4B37-ACCF-745FD81C93BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.Repository.Tests", "MusicLibrary.Repository.Tests\MusicLibrary.Repository.Tests.csproj", "{EBDC65A9-DE7A-45AC-B1F2-C22FD40AC289}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,10 @@ Global
 		{0E54DFA7-9452-4B37-ACCF-745FD81C93BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E54DFA7-9452-4B37-ACCF-745FD81C93BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E54DFA7-9452-4B37-ACCF-745FD81C93BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBDC65A9-DE7A-45AC-B1F2-C22FD40AC289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBDC65A9-DE7A-45AC-B1F2-C22FD40AC289}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBDC65A9-DE7A-45AC-B1F2-C22FD40AC289}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBDC65A9-DE7A-45AC-B1F2-C22FD40AC289}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,5 +85,6 @@ Global
 		{46149555-8529-4151-8BAE-73F4D8AD853F} = {D98CEA87-EC4B-412E-8107-16C3143627B3}
 		{42C3E988-9D62-4516-8758-08C081DF0811} = {0A182464-10A6-43C2-A7DC-1690CA8D76D4}
 		{0E54DFA7-9452-4B37-ACCF-745FD81C93BF} = {D3AF01AF-7C69-468F-AB2D-C589F84B2512}
+		{EBDC65A9-DE7A-45AC-B1F2-C22FD40AC289} = {0A182464-10A6-43C2-A7DC-1690CA8D76D4}
 	EndGlobalSection
 EndGlobal

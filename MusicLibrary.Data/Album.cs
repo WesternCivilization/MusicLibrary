@@ -15,6 +15,8 @@ namespace MusicLibrary.Data
 
         public IEnumerable<Track> Tracks { get; set; }
 
+        public int Id { get; set; }
+
 
         public int GetLength()
         {

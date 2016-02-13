@@ -13,7 +13,7 @@ namespace MusicLibrary.DataAccess.Interfaces
 
         IEnumerable<Album> FindAllAlbumsByGenre(Genre genre);
 
-        IEnumerable<Artist> FindAllAlbumsByArtist(Artist artist);
+        IEnumerable<Album> FindAllAlbumsByArtist(Artist artist);
 
         IEnumerable<Album> GetAllAlbums();
 

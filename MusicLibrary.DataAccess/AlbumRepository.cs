@@ -15,17 +15,18 @@ namespace MusicLibrary.DataAccess
         private readonly IDbConnection _database;
 
 
-        private readonly string _baseQuery = @"SELECT 
-album.Name as AlbumName, artist.Name as ArtistName, genre.Name as GenreName,
-album.Year as ReleaseYear, track.Length, track.Name, track.TrackNumber as Number
+        private readonly string _baseAlbumQuery = @"SELECT 
+album.Id as Id, album.Name as AlbumName, artist.Name as ArtistName, genre.Name as GenreName,
+album.Year as ReleaseYear
 FROM dbo.Album album INNER JOIN dbo.Artist artist
 ON album.ArtistId = artist.Id
 INNER JOIN dbo.Genre genre
-ON album.GenreId = genre.Id
-INNER JOIN dbo.xrAlbumTrack xr ON
-album.Id = xr.AlbumId
-INNER JOIN dbo.Track track ON
-xr.TrackId = track.Id";
+ON album.GenreId = genre.Id";
+
+        private readonly string _baseTrackQuery = @"SELECT 
+track.Name, track.TrackNumber, track.Length
+FROM dbo.Track track INNER JOIN dbo.xrAlbumTrack xr
+ON xr.TrackId = track.Id";
 
         public AlbumRepository(IDbConnection database)
         {
@@ -34,53 +35,62 @@ xr.TrackId = track.Id";
 
 
 
+        private IEnumerable<Track> GetTracksForAlbum(int albumId)
+        {
+            var sql = _baseTrackQuery + " WHERE xr.AlbumId=@albumId";
+
+            return _database.Query<Track>(sql, new {albumId = albumId});
+        } 
+
         public Album GetAlbumByName(string name)
         {
-            var sql = _baseQuery + " WHERE album.Name=@albumName";
+            var sql = _baseAlbumQuery + " WHERE album.Name=@albumName";
 
-            Album album = null;
-            IList<Track> tracks = new List<Track>();
-            foreach (var d in  _database.Query(sql, new {albumName = name}))
-            {
-                if (album == null)
-                {
-                    album = new Album();
-                    album.AlbumName = d.AlbumName;
-                    album.ReleaseYear = d.ReleaseYear;
-                    album.Genre = new Genre {GenreName = d.GenreName};
-                    album.Artist = new Artist {AristName = d.ArtistName};
-                    album.Tracks = new List<Track>();
-                }
+            var album = _database.Query<Album>(sql, new {albumName = name}).Single();
 
-                tracks.Add(new Track
-                {
-                    Length = d.Length,
-                    Name = d.Name,
-                    Number = d.Number
-                });
-
-
-            }
-
-            album.Tracks = tracks;
-
+            album.Tracks = GetTracksForAlbum(album.Id);
             return album;
           
         }
 
         public IEnumerable<Album> FindAllAlbumsByGenre(Data.Genre genre)
         {
-            throw new NotImplementedException();
+            var sql = _baseAlbumQuery + " WHERE genre.Name=@genre";
+
+            var albums = _database.Query<Album>(sql, new { genre = genre.GenreName });
+
+            foreach (var a in albums)
+            {
+                a.Tracks = GetTracksForAlbum(a.Id);
+                yield return a;
+            }
+
         }
 
-        public IEnumerable<Data.Artist> FindAllAlbumsByArtist(Data.Artist artist)
+        public IEnumerable<Album> FindAllAlbumsByArtist(Data.Artist artist)
         {
-            throw new NotImplementedException();
+            var sql = _baseAlbumQuery + " WHERE artist.Name=@artist";
+
+            var albums = _database.Query<Album>(sql, new { artist = artist.AristName });
+
+            foreach (var a in albums)
+            {
+                a.Tracks = GetTracksForAlbum(a.Id);
+                yield return a;
+            }
+
         }
 
         public IEnumerable<Album> GetAllAlbums()
         {
-            throw new NotImplementedException();
+
+            var albums = _database.Query<Album>(_baseAlbumQuery);
+
+            foreach (var a in albums)
+            {
+                a.Tracks = GetTracksForAlbum(a.Id);
+                yield return a;
+            }
         }
 
         public void CreateAlbum(Album album)
