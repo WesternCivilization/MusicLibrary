@@ -40,30 +40,42 @@ ON xr.TrackId = track.Id";
             var sql = _baseTrackQuery + " WHERE xr.AlbumId=@albumId";
 
             return _database.Query<Track>(sql, new {albumId = albumId});
-        } 
+        }
 
         public Album GetAlbumByName(string name)
         {
             var sql = _baseAlbumQuery + " WHERE album.Name=@albumName";
 
-            var album = _database.Query<Album>(sql, new {albumName = name}).Single();
+            var res = _database.Query(sql, new {albumName = name}).Single();
 
-            album.Tracks = GetTracksForAlbum(album.Id);
+            var album = new Album()
+            {
+                AlbumName = res.AlbumName,
+                ReleaseYear = res.ReleaseYear,
+                Genre = new Genre {GenreName = res.GenreName},
+                Artist = new Artist {ArtistName = res.ArtistName},
+                Tracks = GetTracksForAlbum(res.Id)
+            };
+
+
             return album;
-          
+
         }
 
         public IEnumerable<Album> FindAllAlbumsByGenre(Data.Genre genre)
         {
             var sql = _baseAlbumQuery + " WHERE genre.Name=@genre";
 
-            var albums = _database.Query<Album>(sql, new { genre = genre.GenreName });
+            var results = _database.Query(sql, new { genre = genre.GenreName });
 
-            foreach (var a in albums)
+            return results.Select(res => new Album()
             {
-                a.Tracks = GetTracksForAlbum(a.Id);
-                yield return a;
-            }
+                AlbumName = res.AlbumName,
+                ReleaseYear = res.ReleaseYear,
+                Genre = new Genre { GenreName = res.GenreName },
+                Artist = new Artist { ArtistName = res.ArtistName },
+                Tracks = GetTracksForAlbum(res.Id)
+            });
 
         }
 
@@ -71,26 +83,32 @@ ON xr.TrackId = track.Id";
         {
             var sql = _baseAlbumQuery + " WHERE artist.Name=@artist";
 
-            var albums = _database.Query<Album>(sql, new { artist = artist.AristName });
+            var results = _database.Query(sql, new { artist = artist.ArtistName });
 
-            foreach (var a in albums)
+            return results.Select(res => new Album()
             {
-                a.Tracks = GetTracksForAlbum(a.Id);
-                yield return a;
-            }
+                AlbumName = res.AlbumName,
+                ReleaseYear = res.ReleaseYear,
+                Genre = new Genre { GenreName = res.GenreName },
+                Artist = new Artist { ArtistName = res.ArtistName },
+                Tracks = GetTracksForAlbum(res.Id)
+            });
 
         }
 
         public IEnumerable<Album> GetAllAlbums()
         {
 
-            var albums = _database.Query<Album>(_baseAlbumQuery);
+            var results = _database.Query(_baseAlbumQuery);
 
-            foreach (var a in albums)
+            return results.Select(res => new Album()
             {
-                a.Tracks = GetTracksForAlbum(a.Id);
-                yield return a;
-            }
+                AlbumName = res.AlbumName,
+                ReleaseYear = res.ReleaseYear,
+                Genre = new Genre { GenreName = res.GenreName },
+                Artist = new Artist { ArtistName = res.ArtistName },
+                Tracks = GetTracksForAlbum(res.Id)
+            });
         }
 
         public void CreateAlbum(Album album)

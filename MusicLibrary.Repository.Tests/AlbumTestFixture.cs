@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MusicLibrary.Data;
 using MusicLibrary.DataAccess;
 using MusicLibrary.DataAccess.Interfaces;
 using NUnit.Framework;
@@ -42,10 +43,34 @@ namespace MusicLibrary.Repository.Tests
 
             Assert.NotNull(res);
             Assert.AreEqual("Hot Rats", res.AlbumName);
-            Assert.AreEqual("Frank Zappa", res.Artist.AristName);
+            Assert.AreEqual("Frank Zappa", res.Artist.ArtistName);
             Assert.AreEqual(6,res.Tracks.Count());
 
         }
 
+        [Test]
+        public void GetAllAlbumsByGenreTest()
+        {
+            var res = _albumRepository.FindAllAlbumsByGenre(new Genre {GenreName = "Metal"});
+
+            Assert.NotNull(res);
+            var resList = res.ToList();
+            Assert.AreEqual(1, resList.Count);
+            Assert.AreEqual("Holy Diver", resList[0].AlbumName);
+
+        }
+
+
+        [Test]
+        public void GetAllAlbumsByArtistTest()
+        {
+            var res = _albumRepository.FindAllAlbumsByArtist(new Artist { ArtistName = "Frank Zappa" });
+
+            Assert.NotNull(res);
+            var resList = res.ToList();
+            Assert.AreEqual(1, resList.Count);
+            Assert.AreEqual("Hot Rats", resList[0].AlbumName);
+
+        }
     }
 }

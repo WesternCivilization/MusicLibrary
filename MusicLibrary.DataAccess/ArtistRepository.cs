@@ -27,14 +27,14 @@ namespace MusicLibrary.DataAccess
         {
             var sql = "SELECT NAME as ArtistName FROM dbo.Artist WHERE Name=@artistName";
 
-            return _connection.Query<Artist>(sql, new {artistName = artistName}).Single();
+            return _connection.Query<Artist>(sql, new { artistName = artistName }).Single();
         }
 
         public void CreateArtist(Data.Artist artist)
         {
             var sql = "INSERT INTO  dbo.Artist (Name) VALUES (@artistName)";
 
-            _connection.Execute(sql, new {artistName = artist.AristName});
+            _connection.Execute(sql, new {artistName = artist.ArtistName});
         }
     }
 }

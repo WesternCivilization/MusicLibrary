@@ -46,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlbumTestFixture.cs" />
+    <Compile Include="ArtistTestFixture.cs" />
+    <Compile Include="GenreTestFixture.cs" />
+    <Compile Include="PlaylistTestFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

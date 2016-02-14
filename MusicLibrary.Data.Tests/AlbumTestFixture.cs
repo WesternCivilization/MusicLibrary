@@ -13,7 +13,7 @@ namespace MusicLibrary.Data.Tests
                 AlbumName = "Holy Diver",
                 Artist = new Artist
                 {
-                    AristName  = "Dio"
+                    ArtistName  = "Dio"
                 }
             };
 
@@ -28,7 +28,7 @@ namespace MusicLibrary.Data.Tests
                 AlbumName = null,
                 Artist = new Artist
                 {
-                    AristName = "Dio"
+                    ArtistName = "Dio"
                 }
             };
 
@@ -58,5 +58,6 @@ namespace MusicLibrary.Data.Tests
 
             Assert.IsNull(album.DisplayName());
         }
+
     }
 }
