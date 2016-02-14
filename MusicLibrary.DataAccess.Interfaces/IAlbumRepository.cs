@@ -13,18 +13,11 @@ namespace MusicLibrary.DataAccess.Interfaces
 
         IEnumerable<Album> FindAllAlbumsByGenre(Genre genre);
 
-        IEnumerable<Artist> FindAllAlbumsByArtist(Artist artist);
+        IEnumerable<Album> FindAllAlbumsByArtist(Artist artist);
 
         IEnumerable<Album> GetAllAlbums();
 
         void CreateAlbum(Album album);
 
-    }
-
-    public interface IPlaylistRepository
-    {
-        void CreatePlaylist(Playlist playlist);
-
-        IEnumerable<Playlist> GetAllPlaylists();
     }
 }

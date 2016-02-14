@@ -1,6 +1,6 @@
 ﻿USE [master]
 GO
-/****** Object:  Database [MusicLibrary]    Script Date: 2/12/2016 6:54:29 AM ******/
+/****** Object:  Database [MusicLibrary]    Script Date: 2/14/2016 11:20:56 AM ******/
 CREATE DATABASE [MusicLibrary] ON  PRIMARY 
 ( NAME = N'MusicLibrary', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\MusicLibrary.mdf' , SIZE = 3072KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
  LOG ON 
@@ -65,7 +65,7 @@ ALTER DATABASE [MusicLibrary] SET DB_CHAINING OFF
 GO
 USE [MusicLibrary]
 GO
-/****** Object:  Table [dbo].[Album]    Script Date: 2/12/2016 6:54:30 AM ******/
+/****** Object:  Table [dbo].[Album]    Script Date: 2/14/2016 11:20:56 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -87,7 +87,7 @@ CREATE TABLE [dbo].[Album](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Artist]    Script Date: 2/12/2016 6:54:30 AM ******/
+/****** Object:  Table [dbo].[Artist]    Script Date: 2/14/2016 11:20:56 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -106,7 +106,7 @@ CREATE TABLE [dbo].[Artist](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Genre]    Script Date: 2/12/2016 6:54:30 AM ******/
+/****** Object:  Table [dbo].[Genre]    Script Date: 2/14/2016 11:20:56 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -125,14 +125,16 @@ CREATE TABLE [dbo].[Genre](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Playlist]    Script Date: 2/12/2016 6:54:30 AM ******/
+/****** Object:  Table [dbo].[Playlist]    Script Date: 2/14/2016 11:20:56 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE [dbo].[Playlist](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [int] NOT NULL,
+	[Name] [varchar](50) NOT NULL,
  CONSTRAINT [PK_Playlist] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -140,7 +142,9 @@ CREATE TABLE [dbo].[Playlist](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Track]    Script Date: 2/12/2016 6:54:30 AM ******/
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Track]    Script Date: 2/14/2016 11:20:56 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -161,7 +165,7 @@ CREATE TABLE [dbo].[Track](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[xrAlbumGenre]    Script Date: 2/12/2016 6:54:30 AM ******/
+/****** Object:  Table [dbo].[xrAlbumGenre]    Script Date: 2/14/2016 11:20:56 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -177,7 +181,7 @@ CREATE TABLE [dbo].[xrAlbumGenre](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[xrAlbumTrack]    Script Date: 2/12/2016 6:54:30 AM ******/
+/****** Object:  Table [dbo].[xrAlbumTrack]    Script Date: 2/14/2016 11:20:56 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -193,7 +197,7 @@ CREATE TABLE [dbo].[xrAlbumTrack](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[xrPlaylistTrack]    Script Date: 2/12/2016 6:54:30 AM ******/
+/****** Object:  Table [dbo].[xrPlaylistTrack]    Script Date: 2/14/2016 11:20:56 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
