@@ -18,5 +18,14 @@ namespace MusicLibrary.Data
         {
             return GetLength() > 100;
         }
+
+        public bool TracksCountValid()
+        {
+            var trackCount = Tracks.Count();
+            if (trackCount > 0)
+                return true;
+
+            return false;
+        }
     }
 }

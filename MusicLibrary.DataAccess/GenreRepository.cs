@@ -18,23 +18,23 @@ namespace MusicLibrary.DataAccess
 
         public IEnumerable<Genre> GetAllGenres()
         {
-            var sql = "SELECT NAME as GenreName FROM dbo.Genre";
+            var sql = "SELECT Id, NAME as GenreName FROM dbo.Genre";
 
             return _connection.Query<Genre>(sql);
         }
 
         public Genre GetGenreByName(string genreName)
         {
-            var sql = "SELECT NAME as GenreName FROM dbo.Genre WHERE Name = @genreName";
+            var sql = "SELECT Id, NAME as GenreName FROM dbo.Genre WHERE Name = @genreName";
 
             return _connection.Query<Genre>(sql,new {genreName=genreName}).Single();
         }
 
-        public void CreateGenre(Genre genre)
+        public int CreateGenre(Genre genre)
         {
-            var sql = "INSERT INTO  dbo.Genre (Name) VALUES (@genreName)";
+            var sql = "INSERT INTO  dbo.Genre (Name) VALUES (@genreName); SELECT CAST(SCOPE_IDENTITY() as int;";
 
-            _connection.Execute(sql, new { genreName = genre.GenreName});
+            return _connection.ExecuteScalar<int>(sql, new { genreName = genre.GenreName});
         }
     }
 }

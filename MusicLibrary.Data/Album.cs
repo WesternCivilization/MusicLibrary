@@ -5,6 +5,8 @@ namespace MusicLibrary.Data
 {
     public class Album
     {
+        public  const int MaxTrackCount = 100;
+
         public string AlbumName { get; set; }
 
         public Artist Artist { get; set; }
@@ -17,6 +19,14 @@ namespace MusicLibrary.Data
 
         public int Id { get; set; }
 
+        public bool TracksCountValid()
+        {
+            var trackCount = Tracks.Count();
+            if (trackCount > 0 && trackCount < MaxTrackCount)
+                return true;
+
+            return false;
+        }
 
         public int GetLength()
         {

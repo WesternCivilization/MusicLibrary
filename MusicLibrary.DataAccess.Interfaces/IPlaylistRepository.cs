@@ -5,7 +5,7 @@ namespace MusicLibrary.DataAccess.Interfaces
 {
     public interface IPlaylistRepository
     {
-        void CreatePlaylist(Playlist playlist);
+        int CreatePlaylist(Playlist playlist);
 
         IEnumerable<Playlist> GetAllPlaylists();
     }

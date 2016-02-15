@@ -49,6 +49,7 @@
     <Compile Include="GenreRepository.cs" />
     <Compile Include="PlaylistRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrackRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MusicLibrary.DataAccess.Interfaces\MusicLibrary.DataAccess.Interfaces.csproj">

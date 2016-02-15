@@ -13,7 +13,7 @@ namespace MusicLibrary.DataAccess
     public class AlbumRepository : IAlbumRepository
     {
         private readonly IDbConnection _database;
-
+        private readonly ITrackRepository _trackRepos;
 
         private readonly string _baseAlbumQuery = @"SELECT 
 album.Id as Id, album.Name as AlbumName, artist.Name as ArtistName, genre.Name as GenreName,
@@ -24,13 +24,14 @@ INNER JOIN dbo.Genre genre
 ON album.GenreId = genre.Id";
 
         private readonly string _baseTrackQuery = @"SELECT 
-track.Name, track.TrackNumber, track.Length
+track.Id, track.Name, track.TrackNumber, track.Length
 FROM dbo.Track track INNER JOIN dbo.xrAlbumTrack xr
 ON xr.TrackId = track.Id";
 
-        public AlbumRepository(IDbConnection database)
+        public AlbumRepository(IDbConnection database, ITrackRepository trackRepos)
         {
             _database = database;
+            _trackRepos = trackRepos;
         }
 
 
@@ -111,9 +112,30 @@ ON xr.TrackId = track.Id";
             });
         }
 
-        public void CreateAlbum(Album album)
+        public int CreateAlbum(Album album)
         {
-            throw new NotImplementedException();
+            var insert = @"INSERT INTO dbo.Album VALUES(Name,Year,ArtistId,GenreId)
+VALUES (@albumName,@year,@artistId,@genreId); SELECT CAST(SCOPE_IDENTITY() as int;";
+
+            var albumId = _database.ExecuteScalar<int>(insert, new { albumName = album.AlbumName, year = album.ReleaseYear, artistId = album.Artist.Id, genreId = album.Genre.Id });
+
+            foreach (var t in album.Tracks)
+            {
+                CreateTrack(albumId, t);
+            }
+
+            return albumId;
+        }
+
+        private void CreateTrack(int albumId, Track track)
+        {
+            var trackId = _trackRepos.CreateTrack(track);
+
+            var insertXr = @"INSERT INTO dbo.xrAlbumTrack VALUES(AlbumId,TrackId)
+VALUES (@albumId,@trackId)";
+
+            _database.Execute(insertXr, new { albumId = albumId, trackId=trackId });
+
         }
     }
 }
