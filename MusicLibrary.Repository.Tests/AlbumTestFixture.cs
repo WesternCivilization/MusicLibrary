@@ -18,12 +18,14 @@ namespace MusicLibrary.Repository.Tests
     {
         private IDbConnection _connection;
         private IAlbumRepository _albumRepository;
+        private ITrackRepository _trackRepository;
         
         [OneTimeSetUp]
         public void AlbumTestFixtureSetup()
         {
             _connection = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString);
-            _albumRepository = new AlbumRepository(_connection);
+            _trackRepository = new TrackRepository(_connection);
+            _albumRepository = new AlbumRepository(_connection, _trackRepository);
         }
 
         [Test]

@@ -127,8 +127,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapping\AlbumProfile.cs" />
-    <Compile Include="Models\DefaultAlbumViewModel.cs" />
-    <Compile Include="Models\DefaultTrackViewModel.cs" />
+    <Compile Include="Models\TrackViewModel.cs" />
+    <Compile Include="Models\ViewAllAlbumViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +159,10 @@
     <ProjectReference Include="..\MusicLibrary.DataAccess\MusicLibrary.DataAccess.csproj">
       <Project>{0d3e48bb-1951-4743-ae0e-be68a548202d}</Project>
       <Name>MusicLibrary.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MusicLibrary.Data\MusicLibrary.Data.csproj">
+      <Project>{f2d5e9cd-4abd-4815-ae0e-5cb44248aec9}</Project>
+      <Name>MusicLibrary.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\MusicLibrary.Services.Interfaces\MusicLibrary.Services.Interfaces.csproj">
       <Project>{0e54dfa7-9452-4b37-accf-745fd81c93bf}</Project>
