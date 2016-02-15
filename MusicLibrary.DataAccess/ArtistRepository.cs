@@ -18,23 +18,23 @@ namespace MusicLibrary.DataAccess
 
         public IEnumerable<Data.Artist> GetAllArtists()
         {
-            var sql = "SELECT NAME as ArtistName FROM dbo.Artist";
+            var sql = "SELECT Id, NAME as ArtistName FROM dbo.Artist";
 
             return _connection.Query<Artist>(sql);
         }
 
         public Data.Artist GetArtistByName(string artistName)
         {
-            var sql = "SELECT NAME as ArtistName FROM dbo.Artist WHERE Name=@artistName";
+            var sql = "SELECT Id, NAME as ArtistName FROM dbo.Artist WHERE Name=@artistName";
 
             return _connection.Query<Artist>(sql, new { artistName = artistName }).Single();
         }
 
-        public void CreateArtist(Data.Artist artist)
+        public int CreateArtist(Data.Artist artist)
         {
-            var sql = "INSERT INTO  dbo.Artist (Name) VALUES (@artistName)";
+            var sql = "INSERT INTO  dbo.Artist (Name) VALUES (@artistName); SELECT CAST(SCOPE_IDENTITY() as int";
 
-            _connection.Execute(sql, new {artistName = artist.ArtistName});
+            return _connection.ExecuteScalar<int>(sql, new {artistName = artist.ArtistName});
         }
     }
 }

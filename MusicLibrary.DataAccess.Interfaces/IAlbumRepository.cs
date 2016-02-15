@@ -17,7 +17,7 @@ namespace MusicLibrary.DataAccess.Interfaces
 
         IEnumerable<Album> GetAllAlbums();
 
-        void CreateAlbum(Album album);
+        int CreateAlbum(Album album);
 
     }
 }

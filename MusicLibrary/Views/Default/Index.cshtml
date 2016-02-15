@@ -1,0 +1,21 @@
+﻿
+@model IEnumerable<MusicLibrary.Models.ViewAllAlbumViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<ul>
+    @foreach (var album in Model)
+    {
+        <li>@album.ArtistName</li>
+        <ul>
+            @foreach (var t in album.Tracks)
+            {
+                <li>@t.TrackNumber. -  @t.TrackName</li>
+            }
+        </ul>
+
+    }
+</ul>

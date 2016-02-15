@@ -9,6 +9,6 @@ namespace MusicLibrary.DataAccess.Interfaces
 
         Artist GetArtistByName(string artistName);
 
-        void CreateArtist(Artist artist);
+        int CreateArtist(Artist artist);
     }
 }

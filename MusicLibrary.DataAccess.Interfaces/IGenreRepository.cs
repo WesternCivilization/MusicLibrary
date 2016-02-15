@@ -9,6 +9,6 @@ namespace MusicLibrary.DataAccess.Interfaces
 
         Genre GetGenreByName(string genreName);
 
-        void CreateGenre(Genre genre);
+        int CreateGenre(Genre genre);
     }
 }

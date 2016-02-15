@@ -26,10 +26,32 @@ ON xr.TrackId = track.Id";
             _database = database;
         }
 
-        public void CreatePlaylist(Playlist playlist)
+        public int CreatePlaylist(Playlist playlist)
         {
-            throw new System.NotImplementedException();
+            var insert = @"INSERT INTO dbo.Playlist VALUES(PlaylistName)
+VALUES (@playlistName); SELECT CAST(SCOPE_IDENTITY() as int;";
+
+            var playlistId = _database.ExecuteScalar<int>(insert, new { playlistName = playlist.PlaylistName});
+
+            foreach (var t in playlist.Tracks)
+            {
+                CreateTrack(playlistId, t);
+            }
+
+            return playlistId;
         }
+
+
+        private void CreateTrack(int playlistID, Track track)
+        {
+
+            var insertXr = @"INSERT INTO dbo.xrPlaylistTrack VALUES(PlaylistId,TrackId)
+VALUES (@playlistId,@trackId)";
+
+            _database.Execute(insertXr, new { playlistId = playlistID, trackId = track.Id });
+
+        }
+
 
         public IEnumerable<Playlist> GetAllPlaylists()
         {
