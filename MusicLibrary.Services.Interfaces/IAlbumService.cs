@@ -15,6 +15,6 @@ namespace MusicLibrary.Services.Interfaces
 
         IEnumerable<Album> GetAlbumByArtist(string artistName);
 
-        void AddNewAlbum(Album album);
+        Album AddNewAlbum(Album album);
     }
 }

@@ -24,7 +24,7 @@ INNER JOIN dbo.Genre genre
 ON album.GenreId = genre.Id";
 
         private readonly string _baseTrackQuery = @"SELECT 
-track.Id, track.Name, track.TrackNumber, track.Length
+track.Id, track.Name, track.TrackNumber as Number, track.Length
 FROM dbo.Track track INNER JOIN dbo.xrAlbumTrack xr
 ON xr.TrackId = track.Id";
 
@@ -32,6 +32,7 @@ ON xr.TrackId = track.Id";
         {
             _database = database;
             _trackRepos = trackRepos;
+
         }
 
 

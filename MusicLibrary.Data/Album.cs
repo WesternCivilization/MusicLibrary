@@ -5,6 +5,7 @@ namespace MusicLibrary.Data
 {
     public class Album
     {
+
         public  const int MaxTrackCount = 100;
 
         public string AlbumName { get; set; }
@@ -21,6 +22,9 @@ namespace MusicLibrary.Data
 
         public bool TracksCountValid()
         {
+            if (Tracks == null)
+                return false;
+
             var trackCount = Tracks.Count();
             if (trackCount > 0 && trackCount < MaxTrackCount)
                 return true;
@@ -30,6 +34,9 @@ namespace MusicLibrary.Data
 
         public int GetLength()
         {
+            if (Tracks == null)
+                return 0;
+
             return Tracks.Sum(f => f.Length);
         }
 

@@ -50,7 +50,7 @@ namespace MusicLibrary.Services
             return _albumRepository.FindAllAlbumsByArtist(artist);
         }
 
-        public void AddNewAlbum(Album album)
+        public Album AddNewAlbum(Album album)
         {
             using (var scope = new TransactionScope())
             {
@@ -66,12 +66,16 @@ namespace MusicLibrary.Services
                 }
 
                 if (!album.TracksCountValid())
-                    return;
+                    return null;
 
 
-                _albumRepository.CreateAlbum(album);
+                var id = _albumRepository.CreateAlbum(album);
+
+                album.Id = id;
 
                 scope.Complete();
+
+                return album;
             }
         }
 

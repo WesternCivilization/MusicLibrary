@@ -42,11 +42,6 @@ namespace MusicLibrary
 
             }).InstancePerRequest();
 
-            log4net.Config.XmlConfigurator.Configure();
-
-            //Register logging
-            builder.RegisterModule<LoggingModule>();
-
 
             //Create the container
             var container = builder.Build();

@@ -9,13 +9,15 @@
 <ul>
     @foreach (var album in Model)
     {
-        <li>@album.ArtistName</li>
+        <li>@album.AlbumName</li>
         <ul>
             @foreach (var t in album.Tracks)
             {
-                <li>@t.TrackNumber. -  @t.TrackName</li>
+                <li>@t.TrackNumber. - @t.TrackName</li>
             }
         </ul>
 
     }
 </ul>
+
+@Html.ActionLink("Add New", "Add")

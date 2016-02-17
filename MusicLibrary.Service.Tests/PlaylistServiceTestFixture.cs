@@ -39,8 +39,8 @@ namespace MusicLibrary.Service.Tests
                     Tracks = new[]
                     {
                         new Track {Length = 5, Name = "Holy Diver", Number = 1},
-                        new Track {Length = 3, Name = "Hells Bells", Number = 1},
-                        new Track {Length = 6, Name = "Joes Garage", Number = 1}
+                        new Track {Length = 3, Name = "Enter Sandman", Number = 1},
+                        new Track {Length = 6, Name = "Iron Man", Number = 1}
                     }
                 },
                 new Playlist
