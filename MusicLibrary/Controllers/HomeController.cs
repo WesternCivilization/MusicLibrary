@@ -12,12 +12,10 @@ namespace MusicLibrary.Controllers
 {
     public class HomeController : Controller
     {
-        private IAlbumService _albumService;
-        private IPlaylistService _playlistService;
+        private readonly IAlbumService _albumService;
 
-        public HomeController(IAlbumService albumService, IPlaylistService playlistService)
+        public HomeController(IAlbumService albumService)
         {
-            _playlistService = playlistService;
             _albumService = albumService;
         }
 
@@ -29,9 +27,14 @@ namespace MusicLibrary.Controllers
             return View(albums);
         }
 
-        public ActionResult Add()
+        [HttpPost]
+        public ActionResult Save(SaveAlbumViewModel saveAlbum)
         {
-            return View();
+            var album = saveAlbum.ToAlbum();
+
+            _albumService.AddNewAlbum(album);
+
+            return Json(new {status="OK"});
         }
     }
 }

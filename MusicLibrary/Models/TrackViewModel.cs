@@ -16,5 +16,14 @@ namespace MusicLibrary.Models
 
         public int TrackNumber { get; set; }
 
+        public Track ToTrack()
+        {
+            return new Track
+            {
+                Length = TrackLength,
+                Name = TrackName,
+                Number = TrackNumber
+            };
+        }
     }
 }

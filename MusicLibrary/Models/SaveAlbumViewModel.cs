@@ -15,7 +15,20 @@ namespace MusicLibrary.Models
 
         public int ReleaseYear { get; set; }
 
+        public string Genre { get; set; }
 
-        public IEnumerable<TrackViewModel> Tracks { get; set; } 
+        public IEnumerable<TrackViewModel> Tracks { get; set; }
+
+        public Album ToAlbum()
+        {
+            return new Album
+            {
+                Artist =  new Artist {ArtistName =  ArtistName},
+                AlbumName = AlbumName,
+                Genre = new Genre { GenreName = Genre},
+                ReleaseYear = ReleaseYear,
+                Tracks = Tracks.Select(f=>f.ToTrack())
+            };
+        }
     }
 }
